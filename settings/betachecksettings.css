@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100%;
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+  background-color: rgb(16, 16, 20);
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 100;
+  font-size: 1em;
+}
+
+hr {
+  margin: 30px 0;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  color: #888;
+}
+
+h2 {
+  padding: 10px 0;
+}
+
+.settingsblock {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 3px;
+}
+
+.domainbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgb(24, 24, 28);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 3px;
+  width: 100%;
+}
+
+.tabs {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 500px;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0 2px;
+  background: #000;
+  display: inline-block;
+  color: #fff;
+  border-radius: 3px 3px 0 0;
+  -webkit-box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.5019607843);
+          box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.5019607843);
+}
+
+.panels {
+  background-color: rgb(24, 24, 28);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  -webkit-box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.5019607843);
+          box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.5019607843);
+  min-height: 200px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.panels .panel {
+  display: none;
+  -webkit-animation: fadein 0.8s;
+          animation: fadein 0.8s;
+}
+.panels .panel .panel-title {
+  width: 100%;
+  border-bottom: thin solid rgba(255, 255, 255, 0.09);
+  padding: 10px;
+  font-size: smaller;
+}
+.panels .panel ul li {
+  padding: 12px 20px;
+  border-bottom: thin solid rgba(255, 255, 255, 0.09);
+  font-weight: 400;
+}
+.panels .panel ul li .domainname {
+  float: left;
+}
+.panels .panel ul li button {
+  color: rgba(255, 255, 255, 0.82);
+  float: right;
+  background-color: rgb(24, 24, 28);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 3px;
+  padding: 3px 5px;
+  height: 100%;
+}
+.panels .panel ul li button:hover {
+  background-color: rgba(255, 255, 255, 0.82);
+  color: rgb(24, 24, 28);
+}
+.panels .panel ul li button:active {
+  background-color: lightcoral;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.radio {
+  display: none;
+}
+
+#one:checked ~ .panels #one-panel,
+#two:checked ~ .panels #two-panel,
+#three:checked ~ .panels #three-panel {
+  display: block;
+}
+
+#one:checked ~ .tabs #one-tab,
+#two:checked ~ .tabs #two-tab,
+#three:checked ~ .tabs #three-tab {
+  background: rgba(255, 255, 255, 0.1);
+}

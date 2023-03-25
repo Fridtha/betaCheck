@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  min-height: 100%;
+  color: #555;
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
