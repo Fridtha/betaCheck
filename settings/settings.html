@@ -12,7 +12,7 @@
     <img src="../imgs/betacheck_logo.svg" id="logo_header" alt="BetaCheck&trade; Logo"/>
 </div>
 <div class="settingsblock">
-    <h1>BetaCheck&trade; Settings</h1>
+    <h1>Settings</h1>
     <!-- the content will be created with javascript -->
     <div class="domains">
         <!-- content created by javascript -->
@@ -29,37 +29,30 @@
             <!--        <label class="tab" id="three-tab" for="three">Prerequisites</label>-->
         </div>
         <div class="panels">
-            <div class="panel" id="one-panel">
+
+            <div class="panel" id="allowedomains">
 <!--                <div class="panel-title">These domains will be allowed.</div>-->
                 <div class="panel-title">
                     <p>These sites will not be blocked, regardless of mode!<br>
                         A site only needs to partially match any of the values below to be allowed.</p>
                 </div>
-                <ul class="domainlist">
+                <ul id="allowedlist" class="domainlist">
                     <li>
                         <div class="domainname">domain1</div>
                         <button>
                             <span class="btn_remove">Remove</span>
                         </button>
                     </li>
-                    <li>domain2</li>
-                    <li>domain3</li>
-                    <li>domain4</li>
-                    <li>domain5</li>
                 </ul>
             </div>
-            <div class="panel" id="two-panel">
+
+            <div class="panel" id="forcedomains">
 <!--                <div class="panel-title">Take-Away Skills</div>-->
                 <div class="panel-title">
                     <p>These sites will be automatically blocked, even in On Demand mode.<br>
                         A site only needs to partially match any of the values below to be blocked.</p>
                 </div>
-                <ul class="domainlist">
-                    <li>domain6</li>
-                    <li>domain7</li>
-                    <li>domain8</li>
-                    <li>domain9</li>
-                    <li>domain10</li>
+                <ul id="forcedlist" class="domainlist">
                 </ul>
             </div>
             <!--        <div class="panel" id="three-panel">-->

@@ -37,6 +37,11 @@ h2 {
   border-radius: 3px;
 }
 
+#logo_header {
+  width: 200px;
+  height: auto;
+}
+
 .domainbox {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -140,8 +145,8 @@ h2 {
   display: none;
 }
 
-#one:checked ~ .panels #one-panel,
-#two:checked ~ .panels #two-panel,
+#one:checked ~ .panels #allowedomains,
+#two:checked ~ .panels #forcedomains,
 #three:checked ~ .panels #three-panel {
   display: block;
 }
