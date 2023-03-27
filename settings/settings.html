@@ -12,7 +12,15 @@
     <img src="../imgs/betacheck_logo.svg" id="logo_header" alt="BetaCheck&trade; Logo"/>
 </div>
 <div class="settingsblock">
-    <h1>Settings</h1>
+    <div id="setblocktitle" class="blocktitle">
+        <div class="btitle"><h1>Settings</h1></div>
+<!--        <div class="breload"><button id="btn_reload"><span>Reload</span></button></div>-->
+        <div class="breload">
+            <button id="btn_test">Test</button>
+            <button id="btn_reload">Reload</button>
+        </div>
+    </div>
+
     <!-- the content will be created with javascript -->
     <div class="domains">
         <!-- content created by javascript -->
@@ -28,32 +36,37 @@
             <label class="tab" id="two-tab" for="two">Forced</label>
             <!--        <label class="tab" id="three-tab" for="three">Prerequisites</label>-->
         </div>
-        <div class="panels">
+        <div id="domain_panels" class="panels">
 
             <div class="panel" id="allowedomains">
-<!--                <div class="panel-title">These domains will be allowed.</div>-->
                 <div class="panel-title">
-                    <p>These sites will not be blocked, regardless of mode!<br>
-                        A site only needs to partially match any of the values below to be allowed.</p>
+                    <p>These sites will not be censored, regardless of mode!</p>
                 </div>
                 <ul id="allowedlist" class="domainlist">
-                    <li>
-                        <div class="domainname">domain1</div>
-                        <button>
-                            <span class="btn_remove">Remove</span>
-                        </button>
-                    </li>
+
                 </ul>
+                <div class="addDomainBox">
+                    <p id="allowedAlert" class="alert_message">This field cannot be empty.</p>
+                    <input type="text" id="input_addallow" name="input_addallow" size="50">
+                    <button id="btn_addallowed">Add Allowed</button>
+                    <p>A site only needs to partially match any of the values below to remain uncensored.</p>
+                </div>
             </div>
 
             <div class="panel" id="forcedomains">
 <!--                <div class="panel-title">Take-Away Skills</div>-->
                 <div class="panel-title">
-                    <p>These sites will be automatically blocked, even in On Demand mode.<br>
-                        A site only needs to partially match any of the values below to be blocked.</p>
+                    <p>These sites will be automatically censored, even in On Demand mode.</p>
                 </div>
                 <ul id="forcedlist" class="domainlist">
+
                 </ul>
+                <div class="addDomainBox">
+                    <p id="forcedAlert" class="alert_message">This field cannot be empty.</p>
+                    <input type="text" id="input_addforced" name="input_addforced" size="50">
+                    <button id="btn_addforced">Add Forced</button>
+                    <p>A site only needs to partially match any of the values below to be censored.</p>
+                </div>
             </div>
             <!--        <div class="panel" id="three-panel">-->
             <!--            <div class="panel-title">Note on Prerequisites</div>-->
@@ -61,25 +74,6 @@
             <!--        </div>-->
         </div>
     </div><!-- end domainbox -->
-
-<!--    <form id="mainform">-->
-<!--        <h2>Forced Domains</h2>-->
-<!--        <p>Add a domain that requires a BetaCheck&trade;,</p>-->
-<!--        <p>then click the '+'<br>-->
-<!--            Click the '-' to remove a domain.</p>-->
-<!--        <div class="field">-->
-<!--            <input type="text" name="domainitem[]">-->
-<!--            <span class="plus">+</span>-->
-<!--            <span class="minus">-</span>-->
-<!--        </div>-->
-<!--&lt;!&ndash;        <div class="field">&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="text" name="domainitem2">&ndash;&gt;-->
-<!--&lt;!&ndash;            <span class="plus">+</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span class="minus">-</span>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--        <button type="submit">Save</button>-->
-<!--        <button class="reset">Reset</button>-->
-<!--    </form>-->
 
 </div><!-- end settingsblock -->
 
