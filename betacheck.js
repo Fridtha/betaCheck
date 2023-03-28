@@ -5,14 +5,31 @@
  * Reads the border color from storage.
 */
 //=============================================================================
-// const paranum = document.getElementById("imageblock").getElementsByClassName("imagepara").length;
-// let currwin = browser.windows.getCurrent();
-// console.log(currwin);
-function onError(error) {
-    console.log(`Error: ${error}`);
+// console.log();
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("START");
+
+
+
+});
+
+function onGotTabs(tabs) {
+    let tab_num, tab_url, tab_tit;
+
+    for (let tab of tabs) {
+        tab_id = tab.id;
+        tab_num = tab.index;
+        tab_url = tab.url;
+        tab_tit = tab.title;
+        // console.log(`Tab #: ${tab_num + 1} || Title: ${tab_tit} || URL: ${tab_url}`);
+        // console.log(``);
+    }
+    console.log(tabs);
+
+
 }
 
-function onGot(item) {
+function onGotColor(item) {
     let color = "blue";
     if (item.color) {
         color = item.color;
@@ -22,11 +39,15 @@ function onGot(item) {
     document.body.style.border = `10px solid ${color}`;
 }
 
-// Saves to browser sync area
-// const getting = browser.storage.sync.get("color");
+function onError(error) {
+    console.log(`Error: ${error}`);
+}
 
 // Saves to the local comuter instance
 const getting = browser.storage.local.get("color");
-getting.then(onGot, onError);
+getting.then(onGotColor, onError);
+
+let gettingTabs = browser.tabs.query({ currentWindow: true });
+gettingTabs.then(onGotTabs, onError);
 
 

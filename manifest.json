@@ -10,10 +10,18 @@
     "96": "icons/betacheck_icon_96.png"
   },
 
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "storage",
+    "tabs",
+    "contextMenus"
+  ],
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["betacheck.js"]
+      "js": []
     }
   ],
 
@@ -21,10 +29,9 @@
     "page": "popup/options.html"
   },
 
-  "permissions": [
-    "storage",
-    "tabs"
-  ],
+  "background": {
+    "scripts": ["background.js", "betacheck.js"]
+  },
 
   "browser_action": {
     "default_icon": "icons/betacheck_icon_32.png",

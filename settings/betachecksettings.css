@@ -50,10 +50,6 @@ button:active {
   color: rgba(255, 255, 255, 0.82);
 }
 
-#allowedAlert, #forcedAlert {
-  display: none;
-}
-
 .alert_message {
   font-size: small;
   font-weight: 700;
