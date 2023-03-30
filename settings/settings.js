@@ -1,14 +1,22 @@
-//=============================================================================
-// settings.js v0.01
-//=============================================================================
 /*
+ * Copyright (c) 2023.
+ * betaCheck.me
+ * GNU General Public License v3.0 or later [GPL-3.0-or-later]
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. See <https://www.gnu.org/licenses/> <https://spdx.org/licenses/GPL-3.0-or-later.html>
+ *
+ * settings.js v0.01
+ *
  * Handles the settings for BetaCheck
  * console.log();
 */
-//=============================================================================
+// TODO: Select and save betaCheckStatus
 // Initialize the domain list arrays
+const appURL = document.location.href; // Set current url of the page
+console.log(`App URL: ${appURL}`);
 let allowedDomainsArray = [];
 let forcedDomainsArray = [];
+let status;
 
 // let allowedDomains = ["pennstate", "learnpracticeplay", "overapi", "testallow"];
 // let forcedDomains = ["grydnet", "unsplash", "pinterest", "testforced"];
@@ -17,12 +25,62 @@ let forcedDomainsArray = [];
 function onGotLocalStorage(item) {
     // console.log(item);
 
+    handleStatus(item.betaCheckStatus);
+    let statusBtns = document.getElementsByName(`betaCheckStatus`);
+    for(let btn of statusBtns) {
+        btn.addEventListener('click', () => {
+            statusValue = btn.value;
+            saveRadioValue(statusValue);
+            checkRadioBtn(statusValue);
+        });
+    }
+
     // DOMAIN LISTS
     // Extract the two domain list strings from the local storage data.
     let allowedDomainData = item.allowedList;
     let forcedDomainData = item.forcedList;
     //Send them to the domain box handler
     handleDomainLists(allowedDomainData, forcedDomainData);
+}
+
+// Values - status_enabled - status_on_demand - status_disabled
+function handleStatus(statusValue) {
+    let statusCheckButtons = `betaCheckStatus`;
+    if (statusValue) { // if the value exists in local storage...
+        // console.log(statusValue);
+        checkRadioBtn(statusValue);
+    } else {  // If the
+        // console.log(statusValue);
+        statusValue = `status_disabled`; // Set default value
+        saveRadioValue(statusValue);
+        checkRadioBtn(statusValue);
+    }
+}
+function getValueFromRadioButton(name) {
+    //Get all elements with the name
+    let buttons = document.getElementsByName(name);
+    for(let i = 0; i < buttons.length; i++) {
+        //Check if button is checked
+        let button = buttons[i];
+        if(button.checked) {
+            //Return value
+            console.log(button.value);
+            return button.value;
+        }
+    }
+    //No radio button is selected.
+    console.log(`No radio button is selected`);
+    return null;
+}
+function saveRadioValue(statusValue) {
+    browser.storage.local.set({  // Save default to local storage
+        betaCheckStatus: statusValue
+        // }).then(r => console.log(`Allowed domains saved`));
+    }).then();
+}
+
+function checkRadioBtn(statusValue) {
+    document.getElementById(statusValue).checked = true; // set relevent radio button to checked.
 }
 
 function handleDomainLists(allowedDomainData, forcedDomainData) {
@@ -132,13 +190,9 @@ function handleDomainLists(allowedDomainData, forcedDomainData) {
     document.addEventListener("click", (e) => {
         let targetID = e.target.id;
         let targetClass = e.target.className;
-        // console.log(`ID: ${targetID} || Class: ${targetClass}`);
-        // If clicked on...
-        // console.log();
-        // console.log(`Click! ${target}`);
 
         // Reload button
-        if (e.target.id === `btn_reload`) {
+        if (e.target.id === `btn_reload`) {  // TODO: Swap out all e.target.id with targetID variable
             window.location.reload();
         }
 
@@ -202,6 +256,8 @@ function handleDomainLists(allowedDomainData, forcedDomainData) {
         }
     });
 }
+
+
 
 // Promisory error
 function onError(error) {

@@ -1,3 +1,12 @@
+<!--
+  ~ Copyright (c) 2023.
+  ~ betaCheck.me
+  ~ GNU General Public License v3.0 or later [GPL-3.0-or-later]
+  ~ This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+  ~ This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. See <https://www.gnu.org/licenses/> <https://spdx.org/licenses/GPL-3.0-or-later.html>
+  ~
+  -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,10 +23,20 @@
 <div class="settingsblock">
     <div id="setblocktitle" class="blocktitle">
         <div class="btitle"><h1>Settings</h1></div>
-<!--        <div class="breload"><button id="btn_reload"><span>Reload</span></button></div>-->
         <div class="breload">
             <button id="btn_test">Test</button>
             <button id="btn_reload">Reload</button>
+        </div>
+    </div>
+    <div id="betaCheckSelectorBox">
+        <div>Select your betaCheck&trade; level.</div>
+        <div>
+            <input type="radio" id="status_enabled" name="betaCheckStatus" value="status_enabled">
+            <label for="status_enabled">Enabled</label><br>
+            <input type="radio" id="status_on_demand" name="betaCheckStatus" value="status_on_demand">
+            <label for="status_on_demand">On Demand</label><br>
+            <input type="radio" id="status_disabled" name="betaCheckStatus" value="status_disabled">
+            <label for="status_disabled">Disabled</label>
         </div>
     </div>
 
@@ -40,7 +59,7 @@
 
             <div class="panel" id="allowedomains">
                 <div class="panel-title">
-                    <p>These sites will not be censored, regardless of mode!</p>
+                    <p>These sites will never be censored, regardless of mode!</p>
                 </div>
                 <ul id="allowedlist" class="domainlist">
 
