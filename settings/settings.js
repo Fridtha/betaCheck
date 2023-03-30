@@ -14,6 +14,8 @@
 // Initialize the domain list arrays
 const appURL = document.location.href; // Set current url of the page
 console.log(`App URL: ${appURL}`);
+
+
 let allowedDomainsArray = [];
 let forcedDomainsArray = [];
 let status;

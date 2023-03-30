@@ -19,11 +19,19 @@
 // TODO: Send images to BC_Server at http://localhost:2382
 // TODO: Get images back and placed in original location
 // TODO: Settings to allow user to choose image style
+// TODO: Catch the images by itercepting HTTP requests
 
-let myAddonId = browser.runtime.id;
-console.log(`runtime.uuid: ${myAddonId}`);
+// let myAddonId = browser.runtime.id;
+let addonURL = browser.runtime.getURL('/');
+let thisUUID = addonURL.split('/');
 const curURL = document.location.href; // Set current url of the page
 let imageList = []; // Init an array to hold the image list.
+
+// console.log(`runtime.id: ${myAddonId}`);
+// console.log(`runtime.getURL: ${addonURL}`);
+// console.log(thisUUID);
+// console.log(thisUUID[0]);
+// console.log(thisUUID[2]);
 
 function extractStorageData() {
     const gettingLocalData = browser.storage.local.get();  // Gets the local storage data
@@ -94,12 +102,41 @@ function defineBorderColor(color) {
 
 // document.getElementById('imgID').src = "newImage.png";
 function imageHandler() {
+    console.log(`Entered the image handler`);
     Array.prototype.map.call(document.images, function (i) {
-        imageList.push(i.src);
-        i.src = `moz-extension://120197ba-3819-4324-9307-8badc941510e/imgs/pizza_love.jpg`;
+        // imageList.push(i.src);
+        // i.src = `moz-extension://120197ba-3819-4324-9307-8badc941510e/imgs/pizza_love.jpg`;
+        // i.src = `${thisUUID[0]}//${thisUUID[2]}/imgs/pizza_love.jpg`;
+        // i.src = `${thisUUID[0]}//${thisUUID[2]}/imgs/betaSafed_001.png`;
+        postToBetaCensor(i.src);
         console.log(i.src);
     });
     // console.log(imageList);
+}
+
+function postToBetaCensor(imageURL) {
+
+    fetch('http://localhost:2382/censoring/censorImage', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "ImageUrl":imageURL,
+            "CensorOptions": {
+                "COVERED_BREAST_F": {
+                    "Level":8,
+                    "CensorType":"blur"
+                },
+                "EXPOSED_BREAST_F": {
+                    "level":8,
+                    "CensorType":"blur"
+                }
+            }
+        })
+    })
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)))
 }
 
 function onError(error) {
