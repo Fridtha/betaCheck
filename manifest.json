@@ -12,6 +12,8 @@
 
   "permissions": [
     "<all_urls>",
+    "*://localhost/*",
+    "*://localhost:2382/*",
     "webRequest",
     "storage",
     "tabs",
